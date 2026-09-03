@@ -1,0 +1,48 @@
+# Python
+__pycache__/
+*.py[cod]
+*.so
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.venv/
+venv/
+
+# Django/runtime
+db.sqlite3
+*.sqlite3
+staticfiles/
+media/
+outputs/
+logs/
+*.log
+
+# Credentials and local configuration
+.env
+.env.*
+!.env.example
+*service-account*.json
+*credentials*.json
+aiproject-*.json
+*.pem
+*.key
+
+# Model artifacts
+*.safetensors
+*.ckpt
+*.pt
+*.pth
+*.onnx
+*.zip
+
+# Editor/OS
+.DS_Store
+.idea/
+.vscode/
+.claude/
+
+# Local backups
+*.bak
+*.bak_*
+*_backup.py
+*_original.py

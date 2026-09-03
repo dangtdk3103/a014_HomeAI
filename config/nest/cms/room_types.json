@@ -1,0 +1,221 @@
+{
+  "count": 24,
+  "room_types": [
+    {
+      "id": 214,
+      "key": "apartment",
+      "title": "Apartment",
+      "active": true,
+      "group": "space",
+      "prompt_token": "apartment",
+      "icon": "https://cdn.homeinterior.ai/assets/Apartment_cb0089641a/Apartment_cb0089641a.png"
+    },
+    {
+      "id": 221,
+      "key": "house",
+      "title": "House",
+      "active": true,
+      "group": "space",
+      "prompt_token": "house",
+      "icon": "https://cdn.homeinterior.ai/assets/House_628a8a7353/House_628a8a7353.png"
+    },
+    {
+      "id": 256,
+      "key": "underStairSpace",
+      "title": "Under-Stair Space",
+      "active": true,
+      "group": "space",
+      "prompt_token": "under-stair space",
+      "icon": "https://cdn.homeinterior.ai/assets/v6_icon_80a4ff0bfd/v6_icon_80a4ff0bfd.png"
+    },
+    {
+      "id": 228,
+      "key": "office",
+      "title": "Office Building",
+      "active": true,
+      "group": "space",
+      "prompt_token": "office building",
+      "icon": "https://cdn.homeinterior.ai/assets/Office_c904cd5176/Office_c904cd5176.png"
+    },
+    {
+      "id": 235,
+      "key": "residental",
+      "title": "Residental",
+      "active": true,
+      "group": "space",
+      "prompt_token": "residental",
+      "icon": "https://cdn.homeinterior.ai/assets/Residental_3502a9df80/Residental_3502a9df80.png"
+    },
+    {
+      "id": 242,
+      "key": "retail",
+      "title": "Retail",
+      "active": true,
+      "group": "space",
+      "prompt_token": "retail",
+      "icon": "https://cdn.homeinterior.ai/assets/Retail_bf7e0e4d8b/Retail_bf7e0e4d8b.png"
+    },
+    {
+      "id": 249,
+      "key": "villa",
+      "title": "Villa",
+      "active": true,
+      "group": "space",
+      "prompt_token": "villa",
+      "icon": "https://cdn.homeinterior.ai/assets/Villa_fe568d5ea8/Villa_fe568d5ea8.png"
+    },
+    {
+      "id": 66,
+      "key": "4",
+      "title": "Kitchen",
+      "active": true,
+      "group": "room",
+      "prompt_token": "kitchen",
+      "icon": "https://cdn.homeinterior.ai/assets/kitchen_db0739a47e/kitchen_db0739a47e.png"
+    },
+    {
+      "id": 63,
+      "key": "1",
+      "title": "Living Room",
+      "active": true,
+      "group": "room",
+      "prompt_token": "living room",
+      "icon": "https://cdn.homeinterior.ai/assets/livingroom_60c1d01ffa/livingroom_60c1d01ffa.png"
+    },
+    {
+      "id": 68,
+      "key": "6",
+      "title": "Home Office",
+      "active": true,
+      "group": "room",
+      "prompt_token": "home office",
+      "icon": "https://cdn.homeinterior.ai/assets/homeoffice_21e90636e3/homeoffice_21e90636e3.png"
+    },
+    {
+      "id": 71,
+      "key": "9",
+      "title": "Bedroom",
+      "active": true,
+      "group": "room",
+      "prompt_token": "bedroom",
+      "icon": "https://cdn.homeinterior.ai/assets/bedroom_c951ea6d1f/bedroom_c951ea6d1f.png"
+    },
+    {
+      "id": 74,
+      "key": "12",
+      "title": "Bathroom",
+      "active": true,
+      "group": "room",
+      "prompt_token": "bathroom",
+      "icon": "https://cdn.homeinterior.ai/assets/bathroom_d9ba0632ed/bathroom_d9ba0632ed.png"
+    },
+    {
+      "id": 78,
+      "key": "16",
+      "title": "Dining Room",
+      "active": true,
+      "group": "room",
+      "prompt_token": "dining room",
+      "icon": "https://cdn.homeinterior.ai/assets/diningroom_002689a99a/diningroom_002689a99a.png"
+    },
+    {
+      "id": 80,
+      "key": "18",
+      "title": "Coffee Shop",
+      "active": true,
+      "group": "room",
+      "prompt_token": "coffee shop",
+      "icon": "https://cdn.homeinterior.ai/assets/coffeeshop_a22395b6c6/coffeeshop_a22395b6c6.png"
+    },
+    {
+      "id": 82,
+      "key": "20",
+      "title": "Study Room",
+      "active": true,
+      "group": "room",
+      "prompt_token": "study room",
+      "icon": "https://cdn.homeinterior.ai/assets/studyroom_b96c727652/studyroom_b96c727652.png"
+    },
+    {
+      "id": 84,
+      "key": "22",
+      "title": "Restaurant",
+      "active": true,
+      "group": "room",
+      "prompt_token": "restaurant",
+      "icon": "https://cdn.homeinterior.ai/assets/restaurant_92aea971a9/restaurant_92aea971a9.png"
+    },
+    {
+      "id": 87,
+      "key": "25",
+      "title": "Gaming Room",
+      "active": true,
+      "group": "room",
+      "prompt_token": "gaming room",
+      "icon": "https://cdn.homeinterior.ai/assets/gamingroom_6cfe05a906/gamingroom_6cfe05a906.png"
+    },
+    {
+      "id": 90,
+      "key": "28",
+      "title": "Office",
+      "active": true,
+      "group": "room",
+      "prompt_token": "office",
+      "icon": "https://cdn.homeinterior.ai/assets/office_f0102accf1/office_f0102accf1.png"
+    },
+    {
+      "id": 94,
+      "key": "32",
+      "title": "Attic",
+      "active": true,
+      "group": "room",
+      "prompt_token": "attic",
+      "icon": "https://cdn.homeinterior.ai/assets/attic_8059d2cbbb/attic_8059d2cbbb.png"
+    },
+    {
+      "id": 95,
+      "key": "33",
+      "title": "Toilet",
+      "active": true,
+      "group": "room",
+      "prompt_token": "toilet",
+      "icon": "https://cdn.homeinterior.ai/assets/toilet_feae7fb3f3/toilet_feae7fb3f3.png"
+    },
+    {
+      "id": 180,
+      "key": "34",
+      "title": "Balcony",
+      "active": true,
+      "group": "room",
+      "prompt_token": "balcony",
+      "icon": "https://cdn.homeinterior.ai/assets/Balcony_c578ef07a6/Balcony_c578ef07a6.png"
+    },
+    {
+      "id": 182,
+      "key": "35",
+      "title": "Hall",
+      "active": true,
+      "group": "room",
+      "prompt_token": "hall",
+      "icon": "https://cdn.homeinterior.ai/assets/Hall2_1e008298ce/Hall2_1e008298ce.png"
+    },
+    {
+      "id": 183,
+      "key": "36",
+      "title": "Garden",
+      "active": false,
+      "group": "room",
+      "prompt_token": "garden",
+      "icon": "https://cdn.homeinterior.ai/assets/Garden_c442e17614/Garden_c442e17614.png"
+    },
+    {
+      "id": 181,
+      "key": "37",
+      "title": "Deck",
+      "active": true,
+      "group": "room",
+      "prompt_token": "deck",
+      "icon": "https://cdn.homeinterior.ai/assets/deck_4422b483ab/deck_4422b483ab.png"
+    }
+  ]
+}

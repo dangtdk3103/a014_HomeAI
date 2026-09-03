@@ -1,0 +1,29 @@
+accelerate==1.10.1
+controlnet-aux==0.0.10
+diffusers @ git+https://github.com/huggingface/diffusers@decfa3c9e1c2ea55263102c6895d3385a0a7a1ad
+Django==5.2.1
+djangorestframework==3.16.0
+djangorestframework-api-key==3.1.0
+djangorestframework-simplejwt==5.5.1
+google-auth==2.53.0
+google-genai==2.4.0
+huggingface-hub==0.36.2
+mediapipe==0.10.14
+numpy==1.26.4
+nunchaku @ https://github.com/nunchaku-tech/nunchaku/releases/download/v1.0.1/nunchaku-1.0.1%2Btorch2.6-cp311-cp311-linux_x86_64.whl#sha256=a49b50c8ea7fef7d3ed4e14784b82b55b3050dd44df21378249b367025c407b7
+opencv-contrib-python==4.11.0.86
+opencv-python-headless==4.11.0.86
+Pillow==11.3.0
+protobuf==4.25.9
+PyJWT==2.13.0
+requests==2.32.5
+safetensors==0.6.2
+scikit-image==0.24.0
+scipy==1.16.2
+sentencepiece==0.2.1
+timm==1.0.15
+torch==2.6.0
+torchaudio==2.6.0
+torchvision==0.21.0
+transformers==4.53.3
+xformers==0.0.29.post3

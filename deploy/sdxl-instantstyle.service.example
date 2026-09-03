@@ -1,0 +1,16 @@
+[Unit]
+Description=SDXL InstantStyle backend
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=nestai
+WorkingDirectory=/opt/nestai/services/sdxl-instantstyle
+EnvironmentFile=/etc/nestai/sdxl.env
+ExecStart=/opt/nestai/services/sdxl-instantstyle/.venv/bin/python app.py
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target

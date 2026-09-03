@@ -1,0 +1,162 @@
+{
+ "_readme": "Bộ MÀU NestAI = list RIÊNG, tái dùng với MỌI style (composable). prompt gốc lấy từ HomeAI /color-palettes (ngắn + style-agnostic — ĐÂY là fix, không viết palette dài). Runtime: full = style.prompt + apply_template.format(color=color.prompt) + negative_shared.",
+ "apply_template": "applying a {color} color scheme as tasteful ACCENTS on textiles, decor and secondary surfaces, while primary walls and large areas stay neutral",
+ "negative_shared": "color cast, oversaturated, everything one color, monochrome tint, garish, blurry, watermark, text",
+ "count": 22,
+ "colors": [
+  {
+   "id": 1,
+   "key": "turquoise_lagoon",
+   "title": "Tropical Teal",
+   "prompt": "turquoise",
+   "preview": "https://cdn.homeinterior.ai/assets/turquoise_lagoon_259afea553/turquoise_lagoon_259afea553.jpg"
+  },
+  {
+   "id": 2,
+   "key": "terracotta_mirage",
+   "title": "Desert Rose",
+   "prompt": "muted orange and peach",
+   "preview": "https://cdn.homeinterior.ai/assets/terracotta_mirage_f4bda88ff8/terracotta_mirage_f4bda88ff8.jpg"
+  },
+  {
+   "id": 3,
+   "key": "millennial_gray",
+   "title": "Ashen Drift",
+   "prompt": "slate gray",
+   "preview": "https://cdn.homeinterior.ai/assets/millennial_gray_122ade6997/millennial_gray_122ade6997.jpg"
+  },
+  {
+   "id": 4,
+   "key": "fuschia_blossom",
+   "title": "Rose Fever",
+   "prompt": "fushia and light pink",
+   "preview": "https://cdn.homeinterior.ai/assets/fuschia_blossom_bf6f7f9512/fuschia_blossom_bf6f7f9512.jpg"
+  },
+  {
+   "id": 5,
+   "key": "forest_hues",
+   "title": "Woodland Whisper",
+   "prompt": "muted green",
+   "preview": "https://cdn.homeinterior.ai/assets/forest_hues_2223ffbcb9/forest_hues_2223ffbcb9.jpg"
+  },
+  {
+   "id": 6,
+   "key": "peach_orchard",
+   "title": "Apricot Glow",
+   "prompt": "creme and soft pastel peach",
+   "preview": "https://cdn.homeinterior.ai/assets/peach_orchard_9e6997531a/peach_orchard_9e6997531a.jpg"
+  },
+  {
+   "id": 7,
+   "key": "emerald_gem",
+   "title": "Jade Forest",
+   "prompt": "dark green",
+   "preview": "https://cdn.homeinterior.ai/assets/emerald_gem_73688aa573/emerald_gem_73688aa573.jpg"
+  },
+  {
+   "id": 8,
+   "key": "neon_sunset",
+   "title": "Electric Carnival",
+   "prompt": "warm fuschia, orange, yellow and purple",
+   "preview": "https://cdn.homeinterior.ai/assets/neon_sunset_a27d912100/neon_sunset_a27d912100.jpg"
+  },
+  {
+   "id": 9,
+   "key": "azure_mirage",
+   "title": "Coastal Drift",
+   "prompt": "light blue and creme",
+   "preview": "https://cdn.homeinterior.ai/assets/azure_mirage_86c66e07ce/azure_mirage_86c66e07ce.jpg"
+  },
+  {
+   "id": 10,
+   "key": "pastel_breeze",
+   "title": "Sherbet Cloud",
+   "prompt": "pastel pink, pastel blue, pastel purple",
+   "preview": "https://cdn.homeinterior.ai/assets/pastel_breeze_f582f2df23/pastel_breeze_f582f2df23.jpg"
+  },
+  {
+   "id": 11,
+   "key": "twilight_blues",
+   "title": "Midnight Harbor",
+   "prompt": "navy blue",
+   "preview": "https://cdn.homeinterior.ai/assets/twilight_blues_144519edd0/twilight_blues_144519edd0.jpg"
+  },
+  {
+   "id": 12,
+   "key": "earthy_harmony",
+   "title": "Cedar & Clay",
+   "prompt": "earthy brown",
+   "preview": "https://cdn.homeinterior.ai/assets/earthy_harmony_885241e8d6/earthy_harmony_885241e8d6.jpg"
+  },
+  {
+   "id": 13,
+   "key": "arctic_lavender",
+   "title": "Frosted Lilac",
+   "prompt": "pastel light purple, light blue",
+   "preview": "https://cdn.homeinterior.ai/assets/arctic_lavender_8653751634/arctic_lavender_8653751634.jpg"
+  },
+  {
+   "id": 14,
+   "key": "antique_sage",
+   "title": "Vintage Olive",
+   "prompt": "sage green and olive green",
+   "preview": "https://cdn.homeinterior.ai/assets/antique_sage_adf2b4633e/antique_sage_adf2b4633e.jpg"
+  },
+  {
+   "id": 15,
+   "key": "earthy_hues",
+   "title": "Autumn Meadow",
+   "prompt": "earthy brown and sage green",
+   "preview": "https://cdn.homeinterior.ai/assets/earthy_hues_4e654bb37f/earthy_hues_4e654bb37f.jpg"
+  },
+  {
+   "id": 16,
+   "key": "velvet_dusk",
+   "title": "Mauve Twilight",
+   "prompt": "mauve",
+   "preview": "https://cdn.homeinterior.ai/assets/velvet_dusk_bb6f29f64c/velvet_dusk_bb6f29f64c.jpg"
+  },
+  {
+   "id": 17,
+   "key": "ocean_mist",
+   "title": "Misty Tide",
+   "prompt": "aqua blue, indigo, beige",
+   "preview": "https://cdn.homeinterior.ai/assets/ocean_mist_869bf3d91e/ocean_mist_869bf3d91e.jpg"
+  },
+  {
+   "id": 18,
+   "key": "amethyst_dream",
+   "title": "Violet Reverie",
+   "prompt": "purple and violet",
+   "preview": "https://cdn.homeinterior.ai/assets/amethyst_dream_4a0c8ac79b/amethyst_dream_4a0c8ac79b.jpg"
+  },
+  {
+   "id": 19,
+   "key": "sakura_bloom",
+   "title": "Blush Petal",
+   "prompt": "pastel pink",
+   "preview": "https://cdn.homeinterior.ai/assets/sakura_bloom_f769a6efaa/sakura_bloom_f769a6efaa.jpg"
+  },
+  {
+   "id": 20,
+   "key": "lilac_love",
+   "title": "Wisteria Whisper",
+   "prompt": "pastel lilac",
+   "preview": "https://cdn.homeinterior.ai/assets/lilac_love_e8a0924487/lilac_love_e8a0924487.jpg"
+  },
+  {
+   "id": 21,
+   "key": "whimsical_wish",
+   "title": "Cocoa Mauve",
+   "prompt": "dark purple, dark green and brown",
+   "preview": "https://cdn.homeinterior.ai/assets/whimsical_wish_a4f8a555c4/whimsical_wish_a4f8a555c4.jpg"
+  },
+  {
+   "id": 22,
+   "key": "royal_red",
+   "title": "Royal Red",
+   "prompt": "deep royal red and gold",
+   "preview": ""
+  }
+ ]
+}

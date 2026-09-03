@@ -1,0 +1,521 @@
+{
+  "info": {
+    "name": "testing_a014_NestAI_I2I",
+    "description": "Image-to-image API for home interior/exterior redesign + portrait stylize + tidy/reorganize room (Kontext).\n\n- POST /deepart/image_generate  — main generation endpoint (auto-routes by prompt substring)\n- GET  /                         — health check\n\nAuth: Authorization: Api-Key {{api_key}}\n\nimage_generate auto-routes:\n- prompt contains 'home interior' or 'home exterior' (no mask)  -> control mode (MLSD+Depth + Depth LoRA)\n- prompt contains 'smartspace boost'                                    -> Kontext mode (Gemini analyzes scene -> swap 2 furniture pieces)\n- otherwise                                                      -> inpaint mode (cartoon LoRA + face mask)\n\nSUPPORTED STYLES (NestAI parity, gui trong prompt dang \"... luxurious {Style}. home interior\"):\nModern, Minimalistic, Scandinavian, Japandi, Japanese, Zen, Luxury, Industrial, Rustic, Farmhouse, Farm House, Cozy, Midcentury, Mid century, Biophilic, Coastal, Mediterranean, Tropical, Bohemian, Vintage, Cottage, Cottagecore, Art Deco, Baroque, Brutalist, Chinese, French, French Country, Gothic, Italianate, Middle Eastern, Morocco, Spanish, Ski Chalet, Soho Style, Technoland, Cyberpunk, Gamer, Wood, Chocolate, Airbnb, Christmas, Rainbow, Discotheque, Creepy, Medieval, Ancient Egyptian, Man Cave, Loft, Old Money, Cartoon",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Health Check",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            ""
+          ]
+        },
+        "description": "Returns 200 if the Django app is up. Does NOT verify model loaded — check journalctl for 'complete initialize models' for that."
+      },
+      "response": []
+    },
+    {
+      "name": "Generate - Home Interior",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Api-Key {{api_key}}",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "formdata",
+          "formdata": [
+            {
+              "key": "prompt",
+              "value": "Room in beautiful and luxurious Modern. No human. home interior",
+              "type": "text",
+              "description": "Style description. Substring 'home interior' triggers the control-mode route."
+            },
+            {
+              "key": "control_image",
+              "type": "file",
+              "description": "Input room photo (PNG/JPEG). Long edge will be capped at 1664 server-side."
+            },
+            {
+              "key": "num_inference_steps",
+              "value": "35",
+              "type": "text",
+              "description": "Server enforces minimum 35 for interior/exterior. Higher = sharper, slower."
+            },
+            {
+              "key": "guidance_scale",
+              "value": "5.5",
+              "type": "text",
+              "description": "For interior, server may derive from strength via convert_strength_to_guidance_scale."
+            },
+            {
+              "key": "strength",
+              "value": "0.85",
+              "type": "text",
+              "description": "Controls how much FLUX deviates from input. 0.85 = production default."
+            },
+            {
+              "key": "height_resolution",
+              "value": "1024",
+              "type": "text"
+            },
+            {
+              "key": "format",
+              "value": "PNG",
+              "type": "text",
+              "description": "PNG / JPEG / JPG / WEBP / BMP / TIFF"
+            },
+            {
+              "key": "debug",
+              "value": "1",
+              "type": "text",
+              "description": "1 enables DebugCapture (writes layer strip to outputs/pipeline_debug/). 0 to skip."
+            }
+          ]
+        },
+        "url": {
+          "raw": "{{base_url}}/deepart/image_generate",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "deepart",
+            "image_generate"
+          ]
+        },
+        "description": "Interior redesign via FluxControlPipeline + (MLSD + Depth) combined control map + Depth LoRA.\n\nResponse: PNG/JPEG 3-panel image [input | combined_control_map | output].\n\nLatency: ~15-25s steady state.\n\nSUPPORTED STYLES (NestAI parity, gui trong prompt dang \"... luxurious {Style}. home interior\"):\nModern, Minimalistic, Scandinavian, Japandi, Japanese, Zen, Luxury, Industrial, Rustic, Farmhouse, Farm House, Cozy, Midcentury, Mid century, Biophilic, Coastal, Mediterranean, Tropical, Bohemian, Vintage, Cottage, Cottagecore, Art Deco, Baroque, Brutalist, Chinese, French, French Country, Gothic, Italianate, Middle Eastern, Morocco, Spanish, Ski Chalet, Soho Style, Technoland, Cyberpunk, Gamer, Wood, Chocolate, Airbnb, Christmas, Rainbow, Discotheque, Creepy, Medieval, Ancient Egyptian, Man Cave, Loft, Old Money, Cartoon"
+      },
+      "response": []
+    },
+    {
+      "name": "Generate - Home Exterior",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Api-Key {{api_key}}",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "formdata",
+          "formdata": [
+            {
+              "key": "prompt",
+              "value": "House in beautiful and luxurious Mediterranean. No human. home exterior",
+              "type": "text",
+              "description": "Substring 'home exterior' triggers control-mode route (architecture-focused Gemini template)."
+            },
+            {
+              "key": "control_image",
+              "type": "file",
+              "description": "Input house photo."
+            },
+            {
+              "key": "num_inference_steps",
+              "value": "35",
+              "type": "text"
+            },
+            {
+              "key": "guidance_scale",
+              "value": "5.5",
+              "type": "text"
+            },
+            {
+              "key": "strength",
+              "value": "0.85",
+              "type": "text"
+            },
+            {
+              "key": "height_resolution",
+              "value": "1024",
+              "type": "text"
+            },
+            {
+              "key": "format",
+              "value": "PNG",
+              "type": "text"
+            }
+          ]
+        },
+        "url": {
+          "raw": "{{base_url}}/deepart/image_generate",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "deepart",
+            "image_generate"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Generate - Portrait Stylize (Cartoon/Anime)",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Api-Key {{api_key}}",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "formdata",
+          "formdata": [
+            {
+              "key": "prompt",
+              "value": "Ghibli style portrait, vibrant magical atmosphere",
+              "type": "text",
+              "description": "No 'home interior/exterior' substring -> falls to inpaint mode (cartoon LoRA + face mask auto-detected)."
+            },
+            {
+              "key": "control_image",
+              "type": "file",
+              "description": "Selfie / portrait photo."
+            },
+            {
+              "key": "num_inference_steps",
+              "value": "19",
+              "type": "text",
+              "description": "Default 19 for non-interior. Can bump to 25-30 for sharper output."
+            },
+            {
+              "key": "guidance_scale",
+              "value": "9",
+              "type": "text"
+            },
+            {
+              "key": "strength",
+              "value": "0.85",
+              "type": "text",
+              "description": "Style 'anime/cartoon/3d/ghibli/comic/manga' uses request strength. Other styles forced to 0.78."
+            },
+            {
+              "key": "height_resolution",
+              "value": "1024",
+              "type": "text"
+            },
+            {
+              "key": "format",
+              "value": "PNG",
+              "type": "text"
+            }
+          ]
+        },
+        "url": {
+          "raw": "{{base_url}}/deepart/image_generate",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "deepart",
+            "image_generate"
+          ]
+        },
+        "description": "Inpaint mode for portrait stylization. FaceParser auto-detects face -> creates inverse mask -> repaints everything except the face."
+      },
+      "response": []
+    },
+    {
+      "name": "Generate - Interior with Custom Mask",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Api-Key {{api_key}}",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "formdata",
+          "formdata": [
+            {
+              "key": "prompt",
+              "value": "Living room in beautiful Scandinavian style. home interior",
+              "type": "text"
+            },
+            {
+              "key": "control_image",
+              "type": "file",
+              "description": "Input room photo."
+            },
+            {
+              "key": "mask_image",
+              "type": "file",
+              "description": "Custom mask (white = repaint, black = keep). Routes the request to inpaint mode despite 'home interior' in prompt."
+            },
+            {
+              "key": "num_inference_steps",
+              "value": "35",
+              "type": "text"
+            },
+            {
+              "key": "guidance_scale",
+              "value": "9",
+              "type": "text"
+            },
+            {
+              "key": "strength",
+              "value": "0.85",
+              "type": "text"
+            },
+            {
+              "key": "height_resolution",
+              "value": "1024",
+              "type": "text"
+            },
+            {
+              "key": "format",
+              "value": "PNG",
+              "type": "text"
+            }
+          ]
+        },
+        "url": {
+          "raw": "{{base_url}}/deepart/image_generate",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "deepart",
+            "image_generate"
+          ]
+        },
+        "description": "When mask_image is provided, the request goes through inpaint mode using the user-provided mask, bypassing FaceParser. Useful for selective edits without the full control-mode FLUX pipeline."
+      },
+      "response": []
+    },
+    {
+      "name": "Generate - Enhance Quality",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Api-Key {{api_key}}",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "formdata",
+          "formdata": [
+            {
+              "key": "prompt",
+              "value": "enhance quality",
+              "type": "text",
+              "description": "Special trigger: substring 'enhance quality' forces strength=0.2, Gaussian blur on input, and prompt_text='enhance quality'."
+            },
+            {
+              "key": "control_image",
+              "type": "file"
+            },
+            {
+              "key": "num_inference_steps",
+              "value": "19",
+              "type": "text"
+            },
+            {
+              "key": "guidance_scale",
+              "value": "9",
+              "type": "text"
+            },
+            {
+              "key": "strength",
+              "value": "0.85",
+              "type": "text",
+              "description": "Overridden to 0.2 by 'enhance quality' trigger."
+            },
+            {
+              "key": "height_resolution",
+              "value": "1024",
+              "type": "text"
+            },
+            {
+              "key": "format",
+              "value": "PNG",
+              "type": "text"
+            }
+          ]
+        },
+        "url": {
+          "raw": "{{base_url}}/deepart/image_generate",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "deepart",
+            "image_generate"
+          ]
+        },
+        "description": "Light denoise / upscale-feel pass. Strength is forced to 0.2, input is Gaussian-blurred 5x5 before passing to inpaint pipe."
+      },
+      "response": []
+    },
+    {
+      "name": "Generate - Force mode=control (debug)",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Api-Key {{api_key}}",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "formdata",
+          "formdata": [
+            {
+              "key": "prompt",
+              "value": "Modern bedroom redesign",
+              "type": "text",
+              "description": "Prompt without 'home interior' substring."
+            },
+            {
+              "key": "control_image",
+              "type": "file"
+            },
+            {
+              "key": "mode",
+              "value": "control",
+              "type": "text",
+              "description": "auto | control | inpaint. Force control mode even when prompt doesn't say 'home interior'."
+            },
+            {
+              "key": "num_inference_steps",
+              "value": "35",
+              "type": "text"
+            },
+            {
+              "key": "guidance_scale",
+              "value": "5.5",
+              "type": "text"
+            },
+            {
+              "key": "strength",
+              "value": "0.85",
+              "type": "text"
+            },
+            {
+              "key": "format",
+              "value": "PNG",
+              "type": "text"
+            }
+          ]
+        },
+        "url": {
+          "raw": "{{base_url}}/deepart/image_generate",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "deepart",
+            "image_generate"
+          ]
+        },
+        "description": "Override auto-routing. Useful for debugging / A-B testing."
+      },
+      "response": []
+    },
+    {
+      "name": "Generate - Tidy/Reorganize Room (Kontext)",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Api-Key {{api_key}}",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "formdata",
+          "formdata": [
+            {
+              "key": "prompt",
+              "value": "smartspace boost",
+              "type": "text",
+              "description": "Substring 'smartspace boost' triggers the Kontext tidy/swap route. Gemini analyzes the photo and composes the actual CLIP+T5 prompts — this field is just the trigger keyword."
+            },
+            {
+              "key": "control_image",
+              "type": "file",
+              "description": "Input room photo (PNG/JPEG/WEBP). Gemini reads this to identify the 2 main furniture pieces and clutter."
+            },
+            {
+              "key": "guidance_scale",
+              "value": "4.0",
+              "type": "text",
+              "description": "FLUX Kontext guidance scale. Sweet spot is 4.0-5.0 for tidy/swap."
+            },
+            {
+              "key": "num_inference_steps",
+              "value": "25",
+              "type": "text",
+              "description": "Inference steps. 25 is the prototype default."
+            },
+            {
+              "key": "seed",
+              "value": "42",
+              "type": "text",
+              "description": "Fixed seed for reproducibility. Omit or leave blank for fully random."
+            },
+            {
+              "key": "format",
+              "value": "PNG",
+              "type": "text",
+              "description": "PNG / JPEG / WEBP"
+            },
+            {
+              "key": "debug",
+              "value": "0",
+              "type": "text",
+              "description": "1 returns extra JSON with scene_info + clip_prompt + t5_prompt alongside the image. 0 returns just the PNG."
+            }
+          ]
+        },
+        "url": {
+          "raw": "{{base_url}}/deepart/image_generate",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "deepart",
+            "image_generate"
+          ]
+        },
+        "description": "Tidy / re-organize a room photo via Gemini 3.1 Flash Lite + FLUX Kontext. Shares the /deepart/image_generate endpoint with other modes — substring 'smartspace boost' in the prompt triggers the Kontext route.\n\nFlow:\n1. Gemini analyzes the photo, picks 2 main furniture pieces (sofa+armchair, bed+wardrobe, fridge+island, ...), their current sides (left/right), accessories, clutter to remove, and an alternative piece from the image (fallback for twin-object cases).\n2. Code composes CLIP + T5 prompts: object_1 and object_2 swap sides; object_2 also gets a +90° rotation hint to coax wall-anchored furniture. If the two objects look near-identical (matching color/material), it falls back to a 'keep object_1, replace object_2 with alt_object_from_image' branch.\n3. FLUX Kontext regenerates the image at a preferred resolution bucket (672x1568 ... 1568x672).\n\nResponse: PNG/JPEG of the reorganized room.\n\nLatency: ~20-30s for one image at NUM_INFERENCE_STEPS=25."
+      },
+      "response": []
+    }
+  ],
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "http://127.0.0.1:8000",
+      "description": "API base URL. Replace with your deployment URL when testing remotely."
+    },
+    {
+      "key": "api_key",
+      "value": "",
+      "description": "DRF Api-Key. Generate new keys via Django admin /admin/rest_framework_api_key/apikey/"
+    }
+  ]
+}

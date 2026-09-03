@@ -1,0 +1,16 @@
+[Unit]
+Description=NestAI image backend
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=nestai
+WorkingDirectory=/opt/nestai
+EnvironmentFile=/etc/nestai/backend.env
+ExecStart=/opt/nestai/.venv/bin/python manage.py runserver 0.0.0.0:8000 --noreload
+Restart=always
+RestartSec=2
+
+[Install]
+WantedBy=multi-user.target

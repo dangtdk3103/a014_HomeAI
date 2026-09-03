@@ -1,0 +1,19 @@
+{
+  "kitchen": "fitted kitchen cabinets, a kitchen island with bar stools, built-in appliances, a countertop with a sink",
+  "bedroom": "a bed with a headboard and bedding, two nightstands, a wardrobe, a bedside lamp",
+  "bathroom": "a freestanding bathtub, a toilet, a vanity with sink and large mirror, a glass walk-in shower, tiled walls, towels",
+  "toilet": "a toilet, a compact sink vanity with a mirror, tiled walls, a towel rail",
+  "dining room": "a dining table with chairs, a sideboard buffet, a pendant light over the table",
+  "home office": "a desk with an office chair, wall bookshelves, a desk lamp, storage cabinets",
+  "office": "a desk with an ergonomic chair, bookshelves, filing cabinets, a desk lamp",
+  "study room": "a study desk with a chair, tall bookshelves full of books, a reading lamp",
+  "gaming room": "a gaming desk with an RGB PC and dual monitors, an ergonomic gaming chair, LED-lit shelves, a bean bag",
+  "coffee shop": "a cafe service counter, small round tables with chairs, a menu board, shelves of cups and a coffee machine",
+  "restaurant": "dining tables with chairs, a service bar, banquette wall seating, pendant lighting",
+  "attic": "a cozy low-ceiling seating nook, floor cushions, built-in storage, a reading lamp",
+  "balcony": "outdoor lounge chairs, a small side table, potted plants, a railing",
+  "deck": "outdoor deck lounge furniture, a low coffee table, planters, a railing",
+  "hall": "a console table with a mirror, a bench, a coat rack, a runner rug",
+  "under-stair space": "built-in shelving and storage, a small bench, decorative accents",
+  "retail": "product display shelves, a checkout counter, floor display units, spotlighting"
+}
